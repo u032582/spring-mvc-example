@@ -6,10 +6,20 @@
 * SpringRESTのOpenAPIドキュメントを公開
 * SpringRESTのOpenAPIドキュメントをJavadocコメントから生成
 
+
+# 前提条件
+* jdk11 以降がインストールされている
+
 # 起動方法
 コマンドラインにて以下を実行
 ```
-gradlew bootRun
+./gradlew bootRun
+```
+# SpringMvcの確認
+起動後、ブラウザで以下のURLにアクセス
+```
+http://localhost:8080/user
+
 ```
 
 # OpenAPIドキュメント
@@ -18,7 +28,7 @@ gradlew bootRun
 http://localhost:8080/swagger/
 ```
 
-# H2DB
+# データベースの確認 
 データベースを参照する場合は以下にアクセス
 ```
 http://localhost:8080/h2-console
