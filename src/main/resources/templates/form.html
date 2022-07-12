@@ -3,6 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Title</title>
+<style>
+th, td {
+	padding: 5px 10px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th, td {
+	border-bottom: 1px solid #000000;
+}
+</style>
+
 </head>
 <body>
 	<form th:action="@{/user}" th:object="${user}" method="post">
@@ -14,5 +28,35 @@
 
 		<button>POST</button>
 	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>名前</th>
+				<th>EMail</th>
+				<th>年齢</th>
+			</tr>
+		</thead>
+		<tbody id="USER_TABLE">
+		</tbody>
+	</table>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script type="text/javascript">
+		axios.get('/rest/users')
+		  .then(function (response) {
+		    console.log(response);
+		    if(response.data.length > 0){
+			    let users = response.data;
+				let tbody = document.getElementById("USER_TABLE");
+				let str = "";
+				for (let user of users) {
+					str += "<tr><td>" + user["name"] + "</td><td>"+ user["email"] + "</td><td>"+ user["age"] +"</td></tr>";
+				}
+				tbody.innerHTML = str;
+			}
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+	</script>
 </body>
 </html>
