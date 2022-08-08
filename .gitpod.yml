@@ -1,5 +1,5 @@
 image:
-  file: .gitpod.Dickerfile
+  file: .gitpod.Dockerfile
 
 tasks:
   - name: build
